@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00FFFFFF"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/titleDivisor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="50dp"
+        android:layout_height="3dp"
+        android:background="@color/colorExtraLightGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/titleDivisor"
+        app:layout_constraintEnd_toStartOf="@+id/titleDivisor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleDivisor" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="50dp"
+        android:layout_height="3dp"
+        android:background="@color/colorExtraLightGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/titleDivisor"
+        app:layout_constraintEnd_toEndOf="@+id/titleDivisor"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleDivisor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

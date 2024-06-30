@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="etiqueta">
+        <item name="android:background">@drawable/fondo_eti_fab</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="roundedImage" >
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15dp</item>
+    </style>
+
+
+</resources>
+
+

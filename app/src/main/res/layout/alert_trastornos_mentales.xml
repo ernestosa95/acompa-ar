@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4A4A4A"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/textvitamina"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#0E5891"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/trastornos_mentales"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/CANCELARTRASTORNOSMENTALES"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button1"
+        android:text="@string/cancelar"
+        android:textColor="#4A4A4A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/GUARDARTRANSTORNOSMENTALES"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button1"
+        android:text="@string/guardar"
+        android:textColor="#4A4A4A"
+        app:layout_constraintBottom_toBottomOf="@+id/CANCELARTRASTORNOSMENTALES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toEndOf="@+id/CANCELARTRASTORNOSMENTALES"
+        app:layout_constraintTop_toTopOf="@+id/CANCELARTRASTORNOSMENTALES" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/edit_text_1"
+        app:layout_constraintBottom_toTopOf="@+id/CANCELARTRASTORNOSMENTALES"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textvitamina">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/TRASTORNOORGANICO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/organicos"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/SUSTANCIAPSICOACTIVAS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/sustancias_psicoactivas"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/ESQUISOFRENIA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/esquizofrenia"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/HUMOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/trastornos_humor"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/ESTRES"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/estres"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/SINDROMESCOMPORTAMIENTO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/sindromes_comportamiento"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/TRASTORNOSPERSONALIDAD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/trastornos_personalidad"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/DESARROLLOPSICOLOGICO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/desarrollo_psicologico"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/RETRASOMENTAL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/retraso_mental"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/EMOCIONALES"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/trastornos_emocionales"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/TRASTORNOSNOESPECIFICADO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/trastorno_no_especificado"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/LESIONESAUTOINFLIJIDAS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/lesiones_autoinfligidas"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

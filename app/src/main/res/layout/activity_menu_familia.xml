@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4A4A4A"
+    tools:context=".MenuFamilia">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bac"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@drawable/fondo3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/background_blue"
+            android:onClick="SwitchButton"
+            android:text="@string/modulos"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/TERMINAR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/TERMINAR" />
+
+        <Button
+            android:id="@+id/TERMINAR"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/button1"
+            android:onClick="SaveWithHouse"
+            android:text="@string/terminar_grupo_familiar"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/edit_text_1"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/list1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/SITUACIONVIVIENDA"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            tools:layout_editor_absoluteX="-4dp">
+
+        </ListView>
+
+        <RadioGroup
+            android:id="@+id/SITUACIONVIVIENDA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/CHECKRENUENTE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vivienda_renuente"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/CHECKDESHABITADA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vivienda_deshabitada"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/CHECKVACIAHABITADA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="VACIA HAB."
+                android:textSize="15sp" />
+        </RadioGroup>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="60dp"
+            android:layout_height="120dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/fondo2"
+            android:elevation="10dp"
+            android:onClick="NuevaPersona"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/list1">
+
+            <TextView
+                android:id="@+id/factores"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/nueva_persona"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout10"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_redondo_gris"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/mascara"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icono_anadir" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/personas_cargadas"
+            android:textColor="#4A4A4A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/BtnsFamilia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/BTNGENERAL"
+                android:layout_width="130dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/fondo2"
+                android:onClick="familiaGeneral">
+
+                <ImageView
+                    android:id="@+id/ICONOSGENERAL"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/familia" />
+
+                <TextView
+                    android:id="@+id/COMPLETADOGENERAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/completado_cero"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/AVANCEGENERAL"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.985"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/GENERAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/familia_general"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/COMPLETADOGENERAL"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ICONOSGENERAL" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/AVANCEGENERAL"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/rojo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/BTNDENGUE"
+                android:layout_width="130dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/fondo2"
+                android:onClick="Dengue"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ICONOSDENGUE"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/mosquito" />
+
+                <TextView
+                    android:id="@+id/COMPLETADODENGUE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/completado_cero"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/AVANCEDENGUE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.985"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/DENGUE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/aedes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toTopOf="@+id/COMPLETADODENGUE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ICONOSDENGUE" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/AVANCEDENGUE"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/rojo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/BTNEXTERIOR"
+                android:layout_width="130dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/fondo2"
+                android:onClick="exteriorVivienda"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ICONOEXTERIOR"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/arboles" />
+
+                <TextView
+                    android:id="@+id/COMPLETADOEXTERIOR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/completado_cero"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/AVANCEXTERIOR"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.985"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/SERVICIOSEXTERIOR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="exteriorVivienda"
+                    android:text="@string/externo_vivienda"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toTopOf="@+id/COMPLETADOEXTERIOR"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ICONOEXTERIOR" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/AVANCEXTERIOR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:background="@drawable/rojo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/BTNVIVIENDAOLD"
+                android:layout_width="130dp"
+                android:layout_height="180dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/fondo2"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/EMPEZAR2"
+                app:layout_constraintStart_toStartOf="@+id/EMPEZAR2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ICONOSVIVIENDA"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/vivienda" />
+
+                <TextView
+                    android:id="@+id/COMPLETADOVIVIENDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/completado_cero"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/AVANCEVIVIENDA"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.985"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/VIVIENDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/vivienda"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toTopOf="@+id/COMPLETADOVIVIENDA"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ICONOSVIVIENDA" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/AVANCEVIVIENDA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:background="@drawable/rojo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        >
+    </HorizontalScrollView><![CDATA[
+
+
+
+    />
+
+
+
+]]>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,337 @@
+<resources>
+    <string name="app_name">AcompañAr</string>
+    <string name="cargar_datos">CARGAR DATOS</string>
+    <string name="relevamiento_georeferenciacion">RELEVAMIENTO | GEOREFERENCIACIÓN</string>
+    <string name="encabezado">CALLE;NUMERO;COORDENADAS;GRUPO FAMILIAR;DNI;APELLIDO;NOMBRE;EDAD;UNIDAD EDAD; FECHA DE NACIMIENTO;EFECTOR;FACTORES DE RIESGO;CODIGO SISA F. DE RIESGO;VACUNAS;LOTE DE VACUNA;TELEFONO CELULAR;TELEFONO FIJO;MAIL;OBSERVACIONES;PRODUCTO DE LIMPIEZA;NOMBRE CONTACTO;TELEFONO CONTACTO;PARENTEZCO CONTACTO;OCUPACION;EDUCACION;TIPO DE VIVIENDA;PAREDES EXTERIORE;REVOQUE;EXTERIOR DEL TECHO;ARBOLES;AGUA;AGUA PARA BEBER PROVIENE;ALMACENA AGUA DE LLUVIA;ELECTRICIDAD;GAS;EXCRETAS;HABITACIONES;LA VIVIENDA ES;BAÑO;EL BAÑO TIENE;LUGAR PARA COCINAR;USA PARA COCINAR;PISOS;CIELORRAZO;ENCUESTADOR\n</string>
+    <string name="encabezado_dengue" translatable="false">CALLE;NUMERO;COORDENADAS;DNI;APELLIDO;NOMBRE;N° RESIDENTES;CERRADOS O RENUENTES;TANQUES BAJOS Y ELEVADOS - BARRILES - TONELES;-;-;PILETAS - CISTERNAS - ALJIBES;-;-;CUBIERTAS;-;-;CANALETA PARA LLUVIA;-;-;HUECO - AXILA DE ARBOL;-;-;MACETAS - FLORERO - PLANTA ACUATICA;-;-;RECIPIENTE PLASTICOS;-;-;BOTELLAS VARIAS;-;-;ELEMENTOS EN DESUSO - OTROS;-;-\n</string>
+    <string name="encabezado_dengue_2" translatable="false">;;;;;;;;I;T;FA;I;T;FA;I;T;FA;I;T;FA;I;T;FA;I;T;FA;I;T;FA;I;T;FA;I;T;FA;INSPECCIONADOS;TRATADOS;DESTRUIDOS;FOCO AEDICO;LARVICIDA;TIPO DE TRABAJO\n</string>
+    <string name="iniciar_recorrido">INICIAR RECORRIDO</string>
+    <string name="terminar_recorrido">TERMINAR RECORRIDO</string>
+    <string name="reiniciar_recorrido">REINICIAR RECORRIDO</string>
+    <string name="registrar_familia">REGISTRAR FAMILIA</string>
+
+    <string name="nueva_persona">NUEVA PERSONA</string>
+    <string name="terminar_grupo_familiar">TERMINAR GRUPO FAMILIAR</string>
+
+    <string name="apellido">APELLIDO</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="dni" translatable="false">DNI</string>
+    <string name="fecha_nacimiento">FECHA_NACIMIENTO</string>
+    <string name="educacion">EDUCACION</string>
+    <string name="ocupacion">INGRESO Y OCUPACION</string>
+    <string name="contacto">CONTACTO</string>
+    <string name="efector">EFECTOR</string>
+    <string name="observaciones">OBSERVACIONES</string>
+    <string name="factores_riesgo">FACTORES DE RIESGO</string>
+    <string name="completado">Completado:</string>
+    <string name="completado_cero">Completado: 00%</string>
+    <string name="guardar_persona">GUARDAR PERSONA</string>
+    <string name="personas_cargadas">PERSONAS CARGADAS</string>
+
+    <string name="celular">CELULAR</string>
+    <string name="fijo">FIJO</string>
+    <string name="mail" translatable="false">MAIL</string>
+    <string name="persona_contacto">PERSONA DE CONTACTO</string>
+    <string name="nombre_apellido_contacto">NOMBRE Y APELLIDO</string>
+    <string name="telefono">TELÉFONO</string>
+    <string name="parentezco_contacto">PARENTEZCO</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="editar">EDITAR</string>
+    <string name="eliminar">ELIMINAR</string>
+
+    <string name="nuevo">NUEVO</string>
+    <string name="ingresar">INGRESAR</string>
+    <string name="encuestador">ENCUESTADOR</string>
+
+    <string name="calle">CALLE</string>
+    <string name="numero">NÚMERO</string>
+    <string name="miembros_familiares">MIEMBROS FAMILIARES</string>
+    <string name="domicilio_familiar">DOMICILIO GRUPO FAMILIAR</string>
+
+    <string name="si">SI</string>
+    <string name="no">NO</string>
+    <string name="servicios_basicos" translatable="false">SERVICIOS BASICOS</string>
+    <string name="vivienda" translatable="false">VIVIENDA</string>
+    <string name="electricidad" translatable="false">ELECTRICIDAD</string>
+    <string name="tipo_de_vivienda" translatable="false">TIPO DE VIVIENDA</string>
+    <string name="la_vivienda_es" translatable="false">LA VIVIENDA ES...</string>
+    <string name="lugar_cocinar" translatable="false">LUGAR PARA COCINAR</string>
+    <string name="usa_para_cocinar" translatable="false">USA PARA COCINAR...</string>
+    <string name="pisos" translatable="false">MATERIAL DE LOS PISOS</string>
+    <string name="paredes" translatable="false">MATERIAL PREDOMINANTE EN LAS PAREDES EXTERIORES</string>
+    <string name="revestimiento" translatable="false">REVESTIMIENTO EXTERNO O REVOQUE</string>
+    <string name="revestimiento_cielorrazo" translatable="false">REVESTIMIENTO INTERIOR DEL TECHO O CIELORRAZO</string>
+    <string name="techo" translatable="false">MATERIAL PREDOMINANTE EN LA CUBIERTA EXTERIOR DEL TECHO</string>
+    <string name="piezas" translatable="false">CANTIDAD DE AMBIENTES/HABITACIONES/PIEZAS</string>
+    <string name="agua" translatable="false">AGUA</string>
+    <string name="agua_beber_cocinar" translatable="false">AGUA PARA BEBER Y COCINAR, PROVIENE DE...</string>
+    <string name="agua_lluvia" translatable="false">ALMACENA AGUA DE LLUVIA</string>
+    <string name="gas" translatable="false">GAS</string>
+    <string name="excretas" translatable="false">EXCRETAS</string>
+    <string name="arboles" translatable="false">ÁRBOLES</string>
+    <string name="externo_vivienda" translatable="false">INSPECCION EXTERIOR</string>
+    <string name="baño" translatable="false">BAÑO</string>
+    <string name="baño_tiene" translatable="false">EL BAÑO TIENE</string>
+
+    <string name="agregar_trabajo_manualmente" translatable="false">Agregar trabajo manualmente</string>
+    <string name="agregar_efector_manualmente" translatable="false">Agregar efector manualmente</string>
+    <string name="nuevo_trabajo" translatable="false">NUEVO TRABAJO</string>
+    <string name="listo" translatable="false">LISTO</string>
+    <string name="tiene_trabajo" translatable="false">¿TIENE TRABAJO?</string>
+    <string name="compartit" translatable="false">COMPARTIR</string>
+
+    <string name="buscar_efector" translatable="false">BUSCAR EFECTOR</string>
+    <string name="nuevo_efector" translatable="false">NUEVO EFECTOR</string>
+    <string name="ocurrio_error" translatable="false">OCURRIO UN ERROR</string>
+
+    <string name="sin_dato" translatable="false">SIN DATO</string>
+    <string name="escuela_especial" translatable="false">ESCUELA ESPECIAL</string>
+    <string name="jardin" translatable="false">JARDIN</string>
+    <string name="primario" translatable="false">PRIMARIO</string>
+    <string name="secundario" translatable="false">SECUNDARIO</string>
+    <string name="terciario" translatable="false">TERCIARIO</string>
+    <string name="universitario" translatable="false">UNIVERSITARIO</string>
+    <string name="incompleto" translatable="false">INCOMPLETO</string>
+    <string name="cursando" translatable="false">CURSANDO</string>
+    <string name="completo" translatable="false">COMPLETO</string>
+
+    <string name="revoque" translatable="false">REVESTIMIENTO EXTERNO O REVOQUE: incluye terminación ladrillo a la vista.</string>
+    <string name="inodoro" translatable="false">INODORO CON BOTON, MOCHILA O CADENA: con sistema de arrastre de agua para su limpieza.</string>
+    <string name="inodoro2" translatable="false">INODORO SIN BOTON O SIN CADENA: sin sistema de arrastre de agua (por ejemplo: balde).</string>
+    <string name="casilla" translatable="false">CASILLA: está construida con materiales de baja calidad o de desecho.</string>
+    <string name="rancho" translatable="false">RANCHO: generalmente tiene paredes de adobe, piso de tierra y techo de chapa o paja.</string>
+    <string name="local" translatable="false">LOCAL NO CONSTRUIDO PARA HABITACION: no ha sido construido o adaptado para que habiten personas, pero que al momento del Censo es ocupado como residencia habitual.</string>
+    <string name="movil" translatable="false">VIVIENDA MOVIL: puede ser transportada (tienda de campaña o carpa) o constituye una unidad móvil (barco, vagón de ferrocarril, casa rodante, camión).</string>
+
+    <string name="modulos" translatable="false">MÓDULOS</string>
+    <string name="telefono_contacto" translatable="false">TELEFONO CONTACTO</string>
+    <string name="dueño_vivienda" translatable="false">DUEÑO DE LA VIVIENDA</string>
+    <string name="cantidad_piezas" translatable="false">CANTIDAD DE PIEZAS</string>
+    <string name="cielorraso" translatable="false">CIELORRASO</string>
+    <string name="origenagua" translatable="false">ORIGEN AGUA</string>
+    <string name="sexo" translatable="false">SEXO</string>
+    <string name="femenino" translatable="false">F</string>
+    <string name="masculino" translatable="false">M</string>
+
+    <string name="vitamina" translatable="false">VITAMINA D</string>
+    <string name="entrega_vitamina" translatable="false">¿Entrego vitamina D?</string>
+    <string name="embarazo" translatable="false">EMBARAZO</string>
+    <string name="fecha_parto" translatable="false">FECHA PROBABLE DE PARTO</string>
+    <string name="ultimo_control" translatable="false">ULTIMO CONTROL</string>
+    <string name="enfermedad_relacionada_embarazo" translatable="false">ENFERMEDAD ASOCIADA AL EMBARAZO</string>
+    <string name="enfermedad" translatable="false">ENFERMEDAD</string>
+    <string name="discapacidad" translatable="false">DISCAPACIDAD</string>
+    <string name="certificado_unico_discapacidad" translatable="false">CERTIFICADO UNICO DE DISCAPACIDAD</string>
+    <string name="tipo_discapacidad" translatable="false">TIPO DE DISCAPACIDAD</string>
+    <string name="deficiencia_fisica_origen_motor" translatable="false">DEFICIENCIA FISICA DE ORIGEN MOTOR</string>
+    <string name="deficiencia_fisica_origen_visceral" translatable="false">DEFICIENCIA FISICA DE ORIGEN VISCERAL</string>
+    <string name="auditiva" translatable="false">AUDITIVA</string>
+    <string name="deficiencia_intelectual_mental" translatable="false">DEFICIENCIA INTELECTUAL O MENTAL</string>
+    <string name="deficiencia_sensorial_origen_visual" translatable="false">DEFICIENCIA SENSORIAL DE ORIGEN VISUAL</string>
+    <string name="ocio" translatable="false">OCIO</string>
+    <string name="adicciones" translatable="false">ADICCIONES</string>
+    <string name="violencia" translatable="false">VIOLENCIA</string>
+    <string name="transtornos_mentales" translatable="false">TRASTORNOS MENTALES</string>
+    <string name="transtornos_en_niños" translatable="false">TRASTORNOS EN NIÑOS</string>
+    <string name="acompañamiento" translatable="false">ACOMPAÑAMIENTO</string>
+    <string name="recibe_acompañamiento" translatable="false">¿RECIBE ACOMPAÑAMIENTO?</string>
+    <string name="deficit_atencion" translatable="false">DEFICIT DE ATENCION</string>
+    <string name="trastornos_conducta" translatable="false">TRASTORNOS DE LA CONDUCTA</string>
+    <string name="alcohol" translatable="false">ALCOHOL</string>
+    <string name="drogas" translatable="false">DROGAS</string>
+    <string name="tabaco" translatable="false">TABACO</string>
+    <string name="psicologico" translatable="false">PSICOLOGICO</string>
+    <string name="medico" translatable="false">MEDICO</string>
+    <string name="institucion_social" translatable="false">INSTITUCION SOCIAL</string>
+    <string name="deportes" translatable="false">DEPORTES</string>
+    <string name="musica" translatable="false">MUSICA</string>
+    <string name="baile" translatable="false">BAILE</string>
+    <string name="manualidades" translatable="false">MANUALIDADES</string>
+    <string name="actividad_aire_libre" translatable="false">ACTIVIDAD AL AIRE LIBRE</string>
+    <string name="donde_ocio" translatable="false">¿DONDE REALIZA LAS ACTIVIDADES?</string>
+    <string name="lugar" translatable="false">LUGAR</string>
+    <string name="otros" translatable="false">OTROS</string>
+    <string name="tipo_violencia" translatable="false">TIPO DE VIOLENCIA</string>
+    <string name="fisica" translatable="false">FISICA</string>
+    <string name="psicologica" translatable="false">PSICOLOGICA</string>
+    <string name="sexual" translatable="false">SEXUAL</string>
+    <string name="economica" translatable="false">ECONOMICA Y PATRIMONIAL</string>
+    <string name="simbolica" translatable="false">SIMBOLICA</string>
+    <string name="modalidad_violencia" translatable="false">MODALIDAD DE LA VIOLENCIA</string>
+    <string name="domestica" translatable="false">DOMESTICA</string>
+    <string name="laboral" translatable="false">LABORAL</string>
+    <string name="institucional" translatable="false">INSTITUCIONAL</string>
+    <string name="reproductiva" translatable="false">CONTRA LA LIBERTAD REPRODUCTIVA</string>
+    <string name="obstetrica" translatable="false">OBSTETRICA</string>
+    <string name="mediatica" translatable="false">MEDIATICA</string>
+    <string name="actividades_ocio" translatable="false">ACTIVIDADES DE OCIO</string>
+
+    <string name="trastornos_mentales" translatable="false">TRASTORNOS MENTALES</string>
+    <string name="organicos" translatable="false">Trastornos mentales organicos (incluidos los trastornos sintomaticos)</string>
+    <string name="sustancias_psicoactivas" translatable="false">Trastornos mentales y del comportamiento debido a sustancias psicoactivas</string>
+    <string name="esquizofrenia" translatable="false">Esquizofrenia - trastornos esquizotipicos y trastornos delirantes</string>
+    <string name="trastornos_humor" translatable="false">Trastornos del humor</string>
+    <string name="estres" translatable="false">Trastornos neuróticos - trastornos relacionados con el estrés y trastornos somatomorfos</string>
+    <string name="sindromes_comportamiento" translatable="false">Síndromes del comportamiento asociados con alteraciones fisiológicas y factores físicos</string>
+    <string name="trastornos_personalidad" translatable="false">Trastornos de la personalidad y del comportamiento en adultos</string>
+    <string name="retraso_mental" translatable="false">Retraso mental</string>
+    <string name="desarrollo_psicologico" translatable="false">Trastornos del desarrollo psicológico</string>
+    <string name="trastornos_emocionales" translatable="false">Trastornos emocionales y del comportamiento que aparecen habitualmente en la niñez y en la adolescencia</string>
+    <string name="trastorno_no_especificado" translatable="false">Trastorno mental no especificado</string>
+    <string name="lesiones_autoinfligidas" translatable="false">Lesiones autoinfligidas intencionalmente </string>
+
+    <string name="aedes" translatable="false">AEDES</string>
+    <string name="tipo_trabajo" translatable="false">TIPO DE TRABAJO</string>
+    <string name="inspeccion_domiciliaria" translatable="false">INSPECCION DOMICILIARIA</string>
+    <string name="tratamientos" translatable="false">TRATAMIENTOS</string>
+    <string name="fumigacion" translatable="false">FUMIGACION</string>
+    <string name="situacion_casa" translatable="false">SITUACION DE LA CASA</string>
+    <string name="habitada" translatable="false">HABITADA</string>
+    <string name="cerrada" translatable="false">CERRADA O RENUENTE</string>
+    <string name="tanque" translatable="false">TANQUES BAJOS Y ELEVADOS - BARRILES - TONELES</string>
+    <string name="piletas" translatable="false">PILETAS - CISTERNAS - ALJIBES</string>
+    <string name="cubiertas" translatable="false">CUBIERTAS</string>
+    <string name="canaleta" translatable="false">CANALETA PARA LLUVIA</string>
+    <string name="hueco" translatable="false">HUECO O AXILA DE ARBOL</string>
+    <string name="maceta" translatable="false">MACETA - FLOREROS - PLANTA ACUATICA</string>
+    <string name="recipientes_plasticos" translatable="false">RECIPIENTES PLASTICOS</string>
+    <string name="botellas_varias" translatable="false">BOTELLAS VARIAS</string>
+    <string name="elementos_desuso" translatable="false">ELEMENTO EN DESUSO - OTROS</string>
+    <string name="inspeccionado" translatable="false">INSPECCIONADO</string>
+    <string name="tratado" translatable="false">TRATADO</string>
+    <string name="foco_aedico" translatable="false">FOCO AEDICO</string>
+    <string name="destruidos" translatable="false">DESTRUIDOS</string>
+    <string name="larvicidas" translatable="false">LARVICIDAS</string>
+    <string name="sin_intervencion" translatable="false">SIN INTERVENCION</string>
+    <string name="info_familiar" translatable="false">INFORMACION FAMILIAR</string>
+    <string name="grupo_familiar" translatable="false">GRUPO FAMILIAR</string>
+    <string name="persona_general" translatable="false">PERSONA GENERAL</string>
+    <string name="persona_estado_fisico" translatable="false">PERSONA ESTADO FISICO</string>
+    <string name="persona_psico_social" translatable="false">PERSONA PSICO SOCIAL</string>
+
+    <string name="hielo" translatable="false">NIEVE Y/O HIELO EN LA CALLE</string>
+    <string name="perros_sueltos" translatable="false">PERROS SUELTOS</string>
+    <string name="numero_cartografia" translatable="false">NUMERO SEGUN CARTOGRAFIA</string>
+
+    <string name="tipo_enfermedad" translatable="false">TIPO DE ENFERMEDAD CRONICAS</string>
+    <string name="enfermedad_cronica" translatable="false">ENFERMEDADES CRONICAS</string>
+    <string name="cancer" translatable="false">CANCER</string>
+    <string name="diabetes" translatable="false">DIABETES</string>
+    <string name="enfermedades_crdiovasculares" translatable="false">ENFERMEDADES CARDIOVASCULARES</string>
+    <string name="enfermedades_respiratorias" translatable="false">ENFERMEDADES RESPIRATORIAS</string>
+    <string name="otro_tipo_enfermedad" translatable="false">OTRO TIPO DE ENEFERMEDAD NO TRANSMISIBLE</string>
+    <string name="plan_social" translatable="false">PLAN SOCIAL</string>
+    <string name="vivienda_deshabitada" translatable="false">DESHABITADA</string>
+    <string name="vivienda_renuente" translatable="false">RENUENTE</string>
+
+    <string name="bti" translatable="false">BTI</string>
+    <string name="temephos" translatable="false">TEMEPHOS</string>
+    <string name="metoprene" translatable="false">METOPRENE</string>
+
+    <string name="mayores" translatable="false">MAYORES</string>
+    <string name="menores" translatable="false">MENORES</string>
+    <string name="familia_general" translatable="false">FAMILIA GENERAL</string>
+    <string name="telefono_familiar" translatable="false">TELEFONO_FAMILIAR</string>
+
+    <string name="HPV" translatable="false">HPV</string>
+    <string name="realizo_test_hpv" translatable="false">REALIZO TEST HPV</string>
+    <string name="botones" translatable="false">BOTONES</string>
+    <string name="longitud" translatable="false">LONGITUD</string>
+    <string name="latitud" translatable="false">LATITUD</string>
+    <string name="data_revoque" translatable="false">REVOQUE</string>
+    <string name="fecha" translatable="false">FECHA</string>
+    <string name="qr" translatable="false">QR</string>
+    <string name="situacion_habitacional" translatable="false">SITUACION_HABITACIONAL</string>
+    <string name="codigo_color" translatable="false">CODIGO_COLOR</string>
+    <string name="datos_familiares" translatable="false">DATOS FAMILLIARES</string>
+    <string name="fechas" translatable="false">FECHAS</string>
+    <string name="aedes_aegipty" translatable="false">AEDES AEGIPTY</string>
+    <string name="sin_escolarizacion" translatable="false">SIN ESCOLARIZACION</string>
+    <string name="familias_regitradas" translatable="false">FAMILIAS REGISTR.</string>
+    <string name="buscar" translatable="false">BUSCAR</string>
+    <string name="hecho" translatable="false">HECHO</string>
+    <string name="notificaciones" translatable="false">NOTIFICACIONES</string>
+    <string name="marcar_como_hecho" translatable="false">MARCAR COMO HECHO</string>
+    <string name="familia_a_menos_30" translatable="false">FAMILIA A MENOS DE 30 MTS</string>
+    <string name="seleccione_fecha_compartir" translatable="false">SELECCIONE LA FECHA A COMPARTIR</string>
+    <string name="configuraciones" translatable="false">CONFIGURACIONES</string>
+    <string name="relevar" translatable="false">RelevAr</string>
+    <string name="guardar_datos" translatable="false">¿Guardar datos?</string>
+    <string name="cerrar_salir_sesion" translatable="false">Salir y cerrar sesion</string>
+    <string name="fecha_formato" translatable="false">DD-MM-AAAA</string>
+    <string name="provincia" translatable="false">PROVINCIA</string>
+    <string name="habitantes" translatable="false">HABITANTES</string>
+
+    <string name="colon" translatable="false">COLON</string>
+    <string name="entre_50_75" translatable="false">¿Tiene entre 50 y 75 años?</string>
+    <string name="check_sintomas" translatable="false">¿Tuvo alguno de los siguientes síntomas?</string>
+    <string name="sangrado_defeca" translatable="false">Sangrado cuando defeca</string>
+    <string name="perdida_peso" translatable="false">Pérdida de peso sin motivo</string>
+    <string name="cambio_fecal" translatable="false">Cambios en la forma y consistencia de la materia fecal</string>
+    <string name="antecentes_cancer_colon" translatable="false">¿Tiene antecedentes familiares  o personales de cáncer?</string>
+    <string name="sintomas_cancer_colon" translatable="false">SINTOMAS CANCER DE COLON</string>
+    <string name="antecedentes_cancer_colon" translatable="false">ANTECEDENTES CANCER DE COLON</string>
+    <string name="prueba_cancer_colon" translatable="false">PRUEBA CANCER DE COLON</string>
+    <string name="razon_no_prueba_colon" translatable="false">RAZON NO PRUEBA COLON</string>
+    <string name="realizo_prueba_colon" translatable="false">¿Se deja para toma de muestra?</string>
+    <string name="porque_no_prueba_colon" translatable="false">Razón por la que no se realiza</string>
+    <string name="siguiente" translatable="false">Siguiente</string>
+
+    <string name="verificar" translatable="false">Verificar</string>
+    <string name="config_server" translatable="false">Config. Servidor</string>
+    <string name="tiene_30_a_60" translatable="false">¿Tiene entre 30 a 64 años?</string>
+    <string name="advertencia_edad_hpv" translatable="false">Si la persona esta fuera de este rango de edad la muestra directamente será descartada</string>
+
+    <string name="error_send" translatable="false">Error de envio de datos</string>
+    <string name="confirm_send" translatable="false">Envio correcto de datos</string>
+    <string name="obligatorio_tel_fam" translatable="false">Es obligatorio el telefono</string>
+    <string name="code_hpv" translatable="false">CODIGO HPV</string>
+    <string name="text_code_hpv" translatable="false">Código de la muestra</string>
+    <string name="escanear" translatable="false">Escanear DNI</string>
+    <string name="antecedentes_familiares" translatable="false">ANTECEDENTES FAMILIARES</string>
+    <string name="observaciones_vivienda" translatable="false">OBSERVACIONES_VIVIENDA</string>
+    <string name="title_activity_export">Export</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+</resources>

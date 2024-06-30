@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlue">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="ACOMPAÑAMIENTO | GEORREFERENCIACION"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/NUEVOUSUARIO"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/NUEVOUSUARIO" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DATOS DEL USUARIO"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout5" />
+
+    <TextView
+        android:id="@+id/versionTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="AcompañAr"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="109dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/acompanar" />
+
+    <Button
+        android:id="@+id/NUEVOUSUARIO"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/button1"
+        android:onClick="crearUsuario"
+        android:text="NUEVO USUARIO"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <EditText
+            android:id="@+id/APELLIDOINGRESADO"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_edittext"
+            android:ems="10"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/apellido"
+            android:inputType="textVisiblePassword" />
+
+        <EditText
+            android:id="@+id/NOMBREINGRESADO"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/background_edittext"
+            android:ems="10"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/nombre"
+            android:importantForAutofill="no"
+            android:inputType="textVisiblePassword" />
+
+        <Button
+            android:id="@+id/EMPEZAR"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button1"
+            android:onClick="Ingresar"
+            android:text="@string/ingresar"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/grupo_botones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:visibility="gone"
+        app:fab_labelStyle="@style/etiqueta"
+        app:fab_labelsPosition="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/UPDATEBD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_icon="@drawable/hospital"
+            app:fab_size="normal"
+            app:fab_title="ACTUALIZAR EFECTORES" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:background="#4A4A4A">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCrearEncuestador">
+
+        <EditText
+            android:id="@+id/editApellidoEncuestador"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/edit_text_1"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/apellido"
+            android:inputType="textVisiblePassword"
+            android:textColor="#4A4A4A"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EditCrearEncuestador"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/edit_text_1"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/nombre"
+            android:inputType="textVisiblePassword"
+            android:textColor="#4A4A4A"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editDNI"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="@drawable/edit_text_1"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/dni"
+            android:inputType="textVisiblePassword|number"
+            android:textColor="#4A4A4A"
+            android:textSize="20sp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/autoEfector"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/edit_text_1"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="@string/buscar_efector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textefector" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/provincia"
+            android:textColor="#FFFFFF" />
+
+        <Spinner
+            android:id="@+id/PROVINCIA"
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/CANCELARCREARENCUESTADOR"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/button1"
+                android:text="@string/cancelar"
+                android:textColor="#4A4A4A" />
+
+            <Button
+                android:id="@+id/GUARDARCREARENCUESTADOR"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/button1"
+                android:text="@string/guardar"
+                android:textColor="#4A4A4A" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textCrearEncuestador"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#0E5891"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/encuestador"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

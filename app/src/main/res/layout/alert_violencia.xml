@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4A4A4A"
+    tools:ignore="MissingDefaultResource">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/CANCELARVIOLENCIA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textvitamina">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/TIPODEVIOLENCIA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/edit_text_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/tipo_violencia"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/FISICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/fisica"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/PSICOLOGICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/psicologica"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/ECONOMICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/economica"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/SEXUAL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/sexual"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/SIMBOLICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/simbolica"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/MODALIDADDELAVIOLENCIA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/edit_text_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/modalidad_violencia"
+                        android:textColor="#000000"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/DOMESTICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/domestica"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/LABORAL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/laboral"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/INSTITUCIONAL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/institucional"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/REPRODUCTIVA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/reproductiva"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/OBSTETRICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/obstetrica"
+                        android:textSize="18sp" />
+
+                    <CheckBox
+                        android:id="@+id/MEDIATICA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/mediatica"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textvitamina"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="#0E5891"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/violencia"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/CANCELARVIOLENCIA"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button1"
+        android:text="@string/cancelar"
+        android:textColor="#4A4A4A"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/GUARDARVIOLENCIA"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button1"
+        android:text="@string/guardar"
+        android:textColor="#4A4A4A"
+        app:layout_constraintBottom_toBottomOf="@+id/CANCELARVIOLENCIA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toEndOf="@+id/CANCELARVIOLENCIA"
+        app:layout_constraintTop_toTopOf="@+id/CANCELARVIOLENCIA" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

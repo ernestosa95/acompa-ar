@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4A4A4A"
+    android:visibility="visible"
+    tools:context=".ManagementModule.ShareDataManagement.Bluetooth">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/button_redondo"
+        android:clickable="true"
+        android:onClick="on"
+        android:text="Encender"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="72dp"
+        android:layout_toEndOf="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="visible"
+        android:text="Visible"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:background="@drawable/background_button_light_blue"
+        android:onClick="list"
+        android:text="ver Dispositivos conectados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="15dp"
+        android:layout_toRightOf="@+id/button3"
+        android:background="@drawable/button_redondo_rojo"
+        android:onClick="off"
+        android:text="apagar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button1" />
+
+    <CheckBox
+        android:id="@+id/cbServer"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listView"
+        android:layout_below="@+id/txtMessage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="15dp"
+        android:layout_toLeftOf="@+id/button5"
+        android:background="@drawable/background_button_extra_light_grey"
+        android:text="Recibir datos"
+        app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintStart_toStartOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbServer"
+        android:layout_alignBottom="@+id/cbServer"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:background="@drawable/background_button_light_blue"
+        android:onClick="openBT"
+        android:text="conectar"
+        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button6"
+        android:layout_alignBottom="@+id/button6"
+        android:layout_toEndOf="@+id/button5"
+        android:layout_toRightOf="@+id/button5"
+        android:onClick="closeBT"
+        android:text="Close"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtMessage"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/button3"
+        android:layout_toRightOf="@+id/button3"
+        android:background="@drawable/background_button_light_blue"
+        android:onClick="sendBtnClick"
+        android:text="enviar datos"
+        app:layout_constraintEnd_toEndOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <EditText
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="demo"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/cbServer" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/button7"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/background_light_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TEXTINDICACIONES" />
+
+    <ImageButton
+        android:id="@+id/BUTTONBT"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button_redondo_rojo"
+        android:onClick="ONOF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView"
+        app:srcCompat="@android:drawable/stat_sys_data_bluetooth" />
+
+    <TextView
+        android:id="@+id/INDICADORBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/BUTTONBT"
+        app:layout_constraintStart_toStartOf="@+id/BUTTONBT"
+        app:layout_constraintTop_toBottomOf="@+id/BUTTONBT" />
+
+    <TextView
+        android:id="@+id/TEXTINDICACIONES"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/cbServer"
+        app:layout_constraintStart_toStartOf="@+id/cbServer"
+        app:layout_constraintTop_toBottomOf="@+id/cbServer" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_button_light_blue"
+        android:onClick="GuardarDataView"
+        android:text="Guardar datos"
+        app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintStart_toStartOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

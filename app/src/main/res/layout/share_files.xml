@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPar">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/colorBlueLigth"
+        android:gravity="center_vertical"
+        android:text="SELECCIONE LAS FECHAS A COMPARTIR"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/enviarGNU"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button1"
+        android:text="GNU Health"
+        app:layout_constraintBottom_toBottomOf="@+id/BTNCOMPARTIRDENGUE"
+        app:layout_constraintEnd_toStartOf="@+id/BTNCOMPARTIRFECHA"
+        app:layout_constraintTop_toTopOf="@+id/BTNCOMPARTIRDENGUE"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@color/colorPar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <LinearLayout
+            android:id="@+id/FECHASCOMPARTIRVIEW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/CANCELAR"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/button_redondo_azul"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/BTNCOMPARTIRFECHA"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/button1"
+        android:text="@string/compartit"
+        app:layout_constraintBottom_toBottomOf="@+id/enviarGNU"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/enviarGNU" />
+
+    <Button
+        android:id="@+id/BTNCOMPARTIRDENGUE"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edit_text_1"
+        android:text="@string/aedes_aegipty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

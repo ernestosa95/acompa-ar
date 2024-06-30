@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RelevAr</string>
+    <string name="cargar_datos" translatable="false">CHARGER DATA</string>
+    <string name="relevamiento_georeferenciacion">SONDAGE | GÉORÉFÉRENCEMENT</string>
+    <string name="encabezado">RUE;NUMÉRO;COORDONNÉES;GROUPE FAMILIAL;DNI;DERNIER NOM;NOM;ÂGE;UNITÉ AGE;DATE DE NAISSANCE;EFFECTEUR;FACTEURS DE RISQUE;SISA F. CODE DE RISQUE; VACCINS;LOT DE VACCINS;TÉLÉPHONE CELLULAIRE;TÉLÉPHONE FIXE;COURRIER; REMARQUES; PRODUIT DE NETTOYAGE;NOM DU CONTACT;CONTACT TÉLÉPHONIQUE;CONTACT RELATIONNEL;OCCUPATION; ÉDUCATION;INTERVIEWEUR\\n</string>
+    <string name="iniciar_recorrido">TOUR INITIAL</string>
+    <string name="terminar_recorrido">TERMINER LA VISITE</string>
+    <string name="reiniciar_recorrido">RECOMMENCER LA VISITE</string>
+    <string name="nueva_persona">NOUVELLE PERSONNE</string>
+    <string name="terminar_grupo_familiar">FIN DU GROUPE FAMILIAL</string>
+    <string name="apellido">LE NOM</string>
+    <string name="nombre">NOM</string>
+    <string name="fecha_nacimiento">MOIS JOUR, AN</string>
+    <string name="educacion">ÉDUCATION</string>
+    <string name="completado">Terminé:</string>
+    <string name="completado_cero">Terminé: 00%</string>
+    <string name="ocupacion">OCCUPATION</string>
+    <string name="contacto">CONTACT</string>
+    <string name="efector">EFFECTOUR</string>
+    <string name="observaciones">OBSERVATIONS</string>
+    <string name="factores_riesgo">FACTEURS DE RISQUE</string>
+    <string name="guardar_persona">SAUVER LA PERSONNE</string>
+    <string name="personas_cargadas">PERSONNES CHARGÉES</string>
+    <string name="celular">PORTABLE</string>
+    <string name="fijo">FIXE</string>
+    <string name="persona_contacto">PERSONNE DE CONTACT</string>
+    <string name="nombre_apellido_contacto">NOM ET PRÉNOM</string>
+    <string name="parentezco_contacto">RELATION</string>
+    <string name="telefono">TÉLÉPHONE</string>
+    <string name="cancelar">ANNULER</string>
+    <string name="guardar">ENREGISTRER</string>
+    <string name="editar">ÉDITER</string>
+    <string name="eliminar">RETIRER</string>
+    <string name="nuevo">NOUVEAU</string>
+    <string name="ingresar">ENTEROKAY</string>
+    <string name="encuestador">SONDEUR</string>
+    <string name="calle">RUE</string>
+    <string name="numero">NUMÉRO</string>
+    <string name="miembros_familiares">MEMBRES DE LA FAMILLE</string>
+    <string name="domicilio_familiar">ADRESSE DU GROUPE FAMILIAL</string>
+    <string name="si">OUI</string>
+    <string name="no">NON</string>
+    <string name="registrar_familia">REGISTER FAMILE</string>
+</resources>

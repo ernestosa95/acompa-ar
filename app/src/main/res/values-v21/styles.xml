@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MiEstiloAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#4A4A4A</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="android:colorAccent">@color/colorPrimaryDark</item>
+    </style>
+</resources>

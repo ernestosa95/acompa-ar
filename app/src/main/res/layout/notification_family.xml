@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/NOTIFICATION"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/background_superior_extra_light_grey"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TEXTVIEWPERSON1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:textSize="0sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TEXTVIEWPERSON2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:textSize="0sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TEXTVIEWPERSON1" />
+
+        <TextView
+            android:id="@+id/TEXTVIEWPERSON3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="2dp"
+            android:textSize="0sp"
+            app:layout_constraintBottom_toTopOf="@+id/LAYAOUTCOLORNOTIFICATION"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TEXTVIEWPERSON2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/LAYAOUTCOLORNOTIFICATION"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:background="@drawable/rojo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
