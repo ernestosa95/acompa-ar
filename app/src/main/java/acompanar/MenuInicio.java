@@ -195,11 +195,11 @@ public class MenuInicio extends AppCompatActivity {
         final EditText DNI = view_nuevo_usuario.findViewById(R.id.editDNI);
 
         // AUTOCOMPLETE TEXTVIEW DE LOS TRABAJOS
-        AutoCompleteTextView autoEfector = view_nuevo_usuario.findViewById(R.id.autoEfector);
+        /*AutoCompleteTextView autoEfector = view_nuevo_usuario.findViewById(R.id.autoEfector);
         List<String> efectores = new ArrayList<String>();
         EfectoresSearchAdapter searchAdapter = new EfectoresSearchAdapter(this, efectores);
         autoEfector.setThreshold(1);
-        autoEfector.setAdapter(searchAdapter);
+        autoEfector.setAdapter(searchAdapter);*/
 
         /*Creo y asigno las funciones al boton de crear encuentador, corroboro que ninguno de los
         campos este vacio, desactivo todos los encuestadores y luego inserto en la base de datos el

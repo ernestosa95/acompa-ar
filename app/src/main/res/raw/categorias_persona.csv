@@ -167,8 +167,8 @@ RE52_0,¿Ud. se ha sentido deprimido?,ND
 RE53_0,¿Ud. ha sentido que todo le costaba mucho esfuerzo?,ND
 RE54_0,¿Ud. ha sentido tanta tristeza que nada podía alegrarlo?,ND
 RE55_0,"¿Ud. se ha sentido inútil, poco valioso?",ND
-RE56_0,Intervencion actual,SEGUIMIENTOS
+RE56_0,Observaciones de la visita,SEGUIMIENTOS
 RE57_0,Acuerdo con padres,SEGUIMIENTOS
 RE58_0,Estrategias a implementar,SEGUIMIENTOS
 RE59_0,Reuniones con profesionales de otras instituciones y docentes,SEGUIMIENTOS
-RE60_0,¿Esta persona se encuentra en seguimiento activo?,SEGUIMIENTOS
+RE60_0,¿Esta persona se encuentra en seguimiento de trayectoria activo?,SEGUIMIENTOS

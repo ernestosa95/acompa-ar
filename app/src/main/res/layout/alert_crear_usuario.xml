@@ -49,7 +49,8 @@
             android:hint="@string/dni"
             android:inputType="textVisiblePassword|number"
             android:textColor="#4A4A4A"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:visibility="visible" />
 
         <AutoCompleteTextView
             android:id="@+id/autoEfector"
@@ -59,6 +60,7 @@
             android:background="@drawable/edit_text_1"
             android:gravity="center_horizontal|center_vertical"
             android:hint="@string/buscar_efector"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textefector" />

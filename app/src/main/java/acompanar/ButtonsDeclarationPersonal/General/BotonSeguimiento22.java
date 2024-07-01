@@ -39,7 +39,7 @@ public class BotonSeguimiento22 implements Serializable {
         adminBData = new BDData(context, "BDData", null, 1);
         layout = (ConstraintLayout) view.findViewById(R.id.AVANCEGNRL);
         avanceTxt = (TextView) view.findViewById(R.id.COMPLETEGNRL);
-        Log.e("heiht button", Integer.toString(view.getHeight()));
+
         mngArchivo = new Archivos(context);
         //Recupero los datos de opciones de registro de domicilio en general
         options = mngArchivo.getMapCategoriesPersonas();
@@ -72,13 +72,13 @@ public class BotonSeguimiento22 implements Serializable {
         lyOptions.addView(RE56);
 
         View RE57 = buttonViewBasic.generateTextEdit(options.get("RE57_0"), context);
-        lyOptions.addView(RE57);
+        //lyOptions.addView(RE57);
 
         View RE58 = buttonViewBasic.generateTextEdit(options.get("RE58_0"), context);
-        lyOptions.addView(RE58);
+        //lyOptions.addView(RE58);
 
         View RE59 = buttonViewBasic.generateTextEdit(options.get("RE59_0"), context);
-        lyOptions.addView(RE59);
+        //lyOptions.addView(RE59);
 
         //Boton guardar
         Button guardar = view.findViewById(R.id.GUARDARGrl);
@@ -88,9 +88,9 @@ public class BotonSeguimiento22 implements Serializable {
             @Override
             public void onClick(View v) {
                 data.put("RE56_0", buttonViewBasic.getValueText(RE56));
-                data.put("RE57_0", buttonViewBasic.getValueText(RE57));
-                data.put("RE58_0", buttonViewBasic.getValueText(RE58));
-                data.put("RE59_0", buttonViewBasic.getValueText(RE59));
+                //data.put("RE57_0", buttonViewBasic.getValueText(RE57));
+                //data.put("RE58_0", buttonViewBasic.getValueText(RE58));
+                //data.put("RE59_0", buttonViewBasic.getValueText(RE59));
                 data.put("RE60_0", buttonViewBasic.getValueRadio(RE60));
 
                 adminBData.updateCacheUD(data);

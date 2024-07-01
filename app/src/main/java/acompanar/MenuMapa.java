@@ -740,8 +740,8 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
                 recorridoTXT.setText(getString(R.string.terminar_recorrido));
                 dialog.dismiss();
 
-                //SelectEfector();
-                SelectFamily();
+                SelectEfector();
+                //SelectFamily();
             });
 
             // Cerrar el alert de iniciar el recorrido

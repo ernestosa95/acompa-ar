@@ -73,7 +73,8 @@ public class PersonClass implements Serializable {
         if (Mail.length()!=0){Data.put(context.getString(R.string.mail), Mail);}
         if (Nacimiento.length()!=0){Data.put(context.getString(R.string.fecha_nacimiento), Nacimiento);}
         if (FactoresDeRiesgo.length()!=0){Data.put(context.getString(R.string.factores_riesgo), FactoresDeRiesgo);}
-        if (Efector.length()!=0){Data.put(context.getString(R.string.efector), Efector);}
+        if (Efector!=null){
+        if (Efector.length()!=0){Data.put(context.getString(R.string.efector), Efector);}}
         if (Observaciones.length()!=0){Data.put(context.getString(R.string.observaciones), Observaciones);}
         if (NombreContacto.length()!=0){Data.put(context.getString(R.string.nombre_apellido_contacto), NombreContacto);}
         if (TelefonoContacto.length()!=0){Data.put(context.getString(R.string.telefono_contacto), TelefonoContacto);}
