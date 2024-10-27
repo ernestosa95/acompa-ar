@@ -460,4 +460,20 @@ public class ButtonViewBasic {
         }
     }
 
+    public View generateCase(String title, String status){
+
+        LayoutInflater Inflater = LayoutInflater.from(context);
+        final View view = Inflater.inflate(R.layout.basic_case, null);
+
+        //Titulo categoria
+        final TextView titleCategory = view.findViewById(R.id.titleDivisor);
+        titleCategory.setText(title);
+
+        //Titulo categoria
+        final TextView titleStatus = view.findViewById(R.id.txtSTATUS);
+        titleStatus.setText(status);
+
+        return view;
+    }
+
 }

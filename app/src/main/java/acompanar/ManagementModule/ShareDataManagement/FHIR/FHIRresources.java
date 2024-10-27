@@ -144,14 +144,14 @@ public class FHIRresources {
             JSONObject valueCodeableConcept = new JSONObject()
                     .put("coding", new JSONArray().put(new JSONObject()
                             .put("system", "https://redatam.indec.gob.ar/argbin/RpWebEngine.exe/PortalAction?&MODE=MAIN&BASE=CPV2010B&MAIN=WebServerMain.inl&_ga=2.11744892.977170785.1640611973-17329590.1640611973")
-                            .put("code", code_value)
+                            .put("code", code_category)
                             .put("display", text_value)));
             obj.put("valueCodeableConcept", valueCodeableConcept);
         }catch(JSONException e){}
         return obj;
     }
 
-    public JSONObject observationIpcResourceFHIR(   String dni,
+    /*public JSONObject observationIpcResourceFHIR(   String dni,
                                                      String name_institution,
                                                      String code_category,
                                                      String text_category,
@@ -204,9 +204,9 @@ public class FHIRresources {
             obj.put("valueCodeableConcept", valueCodeableConcept);
         }catch(JSONException e){}
         return obj;
-    }
+    }*/
 
-    public JSONObject serviceRequestResourceFHIR(  String id,
+    /*public JSONObject serviceRequestResourceFHIR(  String id,
                                                     String code_value,
                                                     String date,
                                                     String dni_prof,
@@ -267,7 +267,7 @@ public class FHIRresources {
 
         }catch(JSONException e){}
         return obj;
-    }
+    }*/
 
     //Multiple Request: Bundle
     public JSONObject Bundle(ArrayList<JSONObject> entries){

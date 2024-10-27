@@ -215,7 +215,7 @@ public class MenuInicio extends AppCompatActivity {
                                                             ApellidoEncuestador.getText().toString(),
                                                             DNI.getText().toString(),
                                                             SPProvincias.getSelectedItem().toString());
-                                admin.UpdateEncuestador(encuestador.DNI, encuestador.EfectorTrabajo);
+                                //admin.UpdateEncuestador(encuestador.DNI, encuestador.EfectorTrabajo);
 
                         // Creo en segundo plano las bases de datos correspondientes a este
                         // encuestador

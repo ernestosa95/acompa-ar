@@ -78,11 +78,17 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.example.acompanar.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -192,6 +198,16 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
 
         TextView seguimientos = (TextView) findViewById(R.id.textView27);
         seguimientos.setText(adminBDData.getNumberSeguimientos());
+
+        ConstraintLayout seguimientos_view = findViewById(R.id.Seguimientos);
+        seguimientos_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readData();
+            }
+        });
+
+        //readData();
     }
 
     public void SelectDate(View view){
@@ -536,6 +552,139 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
 
     }
 //--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+    public void readData(){
+            //ConstraintLayout boton = findViewById(R.id.Seguimientos);
+
+
+            //boton.setOnClickListener(new View.OnClickListener() {
+                //@Override
+                //public void onClick(View view) {
+                    // Construyo la url
+                    String direccion = "http://"+"192.168.0.107" +":"+ "5000";
+                    // Envio de los datos
+                    RequestQueue requestQueue = Volley.newRequestQueue(getBaseContext());
+
+                    StringRequest stringRequestData = new StringRequest(Request.Method.POST, direccion+"/get_list", new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //Toast.makeText(builder_server.getContext(), response, Toast.LENGTH_SHORT).show();
+                            //if (response.equals("ipc")) {
+                                //Toast.makeText(getBaseContext(), response.toString(), Toast.LENGTH_SHORT).show();
+
+                            try {
+
+                                JSONArray casos = new JSONArray(response.toString());
+                                ArrayList<PersonClass> personas = new ArrayList<>();
+
+                                for (int i = 0; i < casos.length(); i++) {
+                                    BDData casosBDData = new BDData(getBaseContext(), "BDData", null, 1);
+
+                                    PersonClass person = new PersonClass(getBaseContext());
+                                    JSONObject personJson = casos.getJSONObject(i);
+                                    String name = personJson.getString("nombre");
+
+                                    person.Data.put("DNI", personJson.getString("dni"));
+                                    person.Data.put("NOMBRE", personJson.getString("nombre"));
+                                    person.Data.put("APELLIDO", personJson.getString("apellido"));
+
+                                    String formatoOriginal = "yyyy-MM-dd";
+                                    String formatoDeseado = "MMM dd, yyyy";
+                                    SimpleDateFormat formato = new SimpleDateFormat(formatoOriginal);
+                                    // Convertimos la cadena a un objeto Date
+                                    Date fecha = formato.parse(personJson.getString("fecha_nacimiento"));
+                                    // Creamos un objeto SimpleDateFormat para el formato deseado
+                                    SimpleDateFormat formatoNuevo = new SimpleDateFormat(formatoDeseado);
+                                    person.Data.put("FECHA", formatoNuevo.format(fecha));
+                                    if(personJson.getString("status").equals("activo")) {
+                                        person.Data.put("RE60_0", "SI");
+                                    }
+                                    if(!personJson.getString("efector").equals("null")){
+                                        person.Data.put("EFECTOR", personJson.getString("efector"));
+                                    }
+
+                                    if (!casosBDData.existCase(personJson)) {
+                                        Log.e("Person", personJson.toString());
+                                        casosBDData.insert_person(person);
+                                        TextView seguimientos = (TextView) findViewById(R.id.textView27);
+                                        seguimientos.setText(casosBDData.getNumberSeguimientos());
+                                    }
+
+                                    Log.d("Person", "Name: " + name);
+                                    casosBDData.close();
+                                }
+
+                            } catch (JSONException | ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+
+
+
+
+                            showCases();
+
+                        }
+                    }, new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError error){
+                            Toast.makeText(getBaseContext(), "No conectado a la red", Toast.LENGTH_SHORT).show();
+                            showCases();
+
+                        }
+                    }){@Override
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<>();
+                        try {
+                            params.put("USER", "admin");
+                        }catch (Exception e){}
+                        return params;
+                    }
+                    };
+                    requestQueue.add(stringRequestData);
+                //}
+            //});
+
+
+
+    }
+
+    private void showCases(){
+
+        ButtonViewBasic viewBasic = new ButtonViewBasic(this);
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater Inflater = getLayoutInflater();
+        View view1 = Inflater.inflate(R.layout.basic_alert, null);
+        builder.setView(view1);
+        builder.setCancelable(false);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        TextView cabecera = view1.findViewById(R.id.TXTGralCabecera);
+        cabecera.setText("Seguimientos");
+
+        Button guardar = view1.findViewById(R.id.GUARDARGrl);
+        guardar.setVisibility(View.GONE);
+
+        LinearLayout ly = view1.findViewById(R.id.LYGralOptions);
+        BDData casosBDData = new BDData(getBaseContext(), "BDData", null, 1);
+        ArrayList<PersonClass> cases = casosBDData.getCases(this);
+        for (int i=0; i<cases.size(); i++){
+            String identificacion = cases.get(i).Data.get("NOMBRE") + " " + cases.get(i).Data.get("APELLIDO");
+            View view = viewBasic.generateCase(identificacion, "Status: "+"ACTIVO");
+            ly.addView(view);
+        }
+        casosBDData.close();
+
+        ImageButton cancelar = view1.findViewById(R.id.CANCELARGrl);
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 //--------------------------------------------------------------------------------------------------
     public void Compartir() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);

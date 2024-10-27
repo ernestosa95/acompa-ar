@@ -1429,4 +1429,122 @@ public class BDData extends SQLiteOpenHelper {
         //db.execSQL("DROP TABLE CACHE");
         //db.execSQL(CREATE_CACHE);
     }
+
+    //ACOMPAÑAR
+    /*public boolean ExistCase(JSONObject personJson){
+        Boolean value;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String search = null;
+
+        String nombre = null;
+        String apellido=null;
+        String dni=null;
+        Cursor registros;
+        try {
+            // Check for the existence of the RE60_0 column
+            String checkColumnQuery = "SELECT * FROM PERSONS";
+            Cursor checkCursor = db.rawQuery(checkColumnQuery, null);
+            checkCursor.moveToFirst();
+            int columnCount = 0;
+            for (int i=0; i<checkCursor.getCount(); i++){
+                if (checkCursor.getColumnName(i).equals("RE60_0")){
+                    columnCount=1;
+                }
+            }
+            checkCursor.close();
+
+            if (columnCount==1) {
+                nombre = personJson.getString("nombre");
+                apellido = personJson.getString("apellido");
+                dni = personJson.getString("dni");
+
+                String sql = "SELECT * FROM PERSONS WHERE NOMBRE = ? AND APELLIDO = ? AND DNI = ? AND RE60_0 = ?";
+
+                registros = db.rawQuery(sql, new String[]{nombre, apellido, dni, "SI"});
+
+                if (registros.getCount() != 0) {
+                    value = Boolean.TRUE;
+                    Log.e("esta", nombre+" "+apellido);
+                }else {
+                    value = Boolean.FALSE;
+                    Log.e("no esta", nombre+" "+apellido);
+                }
+            }else {
+                Log.e("no", "existe 60");
+                value = Boolean.FALSE;
+            }
+            db.close();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
+        return value;
+    }*/
+
+    public boolean existCase(JSONObject personJson) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        boolean exists = false;
+
+        try {
+
+                String nombre = personJson.getString("nombre");
+                String apellido = personJson.getString("apellido");
+                String dni = personJson.getString("dni");
+
+                String sql = "SELECT * FROM PERSONS WHERE NOMBRE = ? AND APELLIDO = ? AND DNI = ?";
+                Cursor registros = db.rawQuery(sql, new String[]{nombre, apellido, dni});
+
+                registros.moveToFirst();
+                if (registros.getCount() > 0) {
+                    String[] namesCol = registros.getColumnNames();
+                    Log.e("colname", namesCol.toString());
+
+                    for (int i=0; i< registros.getColumnCount(); i++) {
+
+                        if (registros.getColumnName(i).equals("RE60_0")) {
+                            if (registros.getString(i).equals("SI")){
+                                exists=true;
+                            }
+                            break; // No es necesario seguir buscando si ya lo encontramos
+                        }
+                    }
+                }
+                registros.close();
+
+        } catch (JSONException e) {
+            Log.e("Error", "Error al parsear el JSON: " + e.getMessage());
+        } finally {
+            db.close();
+        }
+
+        return exists;
+    }
+
+    public ArrayList<PersonClass> getCases(Context context){
+        ArrayList<PersonClass> value = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+
+        try {
+            String sql = "SELECT * FROM PERSONS WHERE RE60_0 = ?";
+
+            Cursor registros = db.rawQuery(sql, new String[]{"SI"});
+
+            registros.moveToFirst();
+            for (int i=0; i<registros.getCount(); i++){
+                PersonClass p = new PersonClass(context);
+                for (int j=0; j<registros.getColumnCount(); j++){
+                    p.Data.put(registros.getColumnName(j),
+                            registros.getString(j));
+                }
+                value.add(p);
+                registros.moveToNext();
+            }
+        } finally {
+            db.close();
+        }
+
+
+        return value;
+    }
 }
