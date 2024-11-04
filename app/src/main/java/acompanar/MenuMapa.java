@@ -123,6 +123,8 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
 
     private GoogleMap googleMap;
 
+    String direccion = "";
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,11 +205,13 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
         seguimientos_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readData();
+                checkUrl();
             }
         });
 
         //readData();
+        adminBDData.CoordinateAssignation();
+
     }
 
     public void SelectDate(View view){
@@ -553,99 +557,145 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
     }
 //--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
-    public void readData(){
-            //ConstraintLayout boton = findViewById(R.id.Seguimientos);
+//  ENVIO DE CASOS
 
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//  LECTURA DE CASOS
+    public void checkUrl(){
 
-            //boton.setOnClickListener(new View.OnClickListener() {
-                //@Override
-                //public void onClick(View view) {
-                    // Construyo la url
-                    String direccion = "http://"+"192.168.0.107" +":"+ "5000";
-                    // Envio de los datos
-                    RequestQueue requestQueue = Volley.newRequestQueue(getBaseContext());
+    // Construyo la url
+    ArrayList<HashMap<String,String>> servers = admin.GetServers();
 
-                    StringRequest stringRequestData = new StringRequest(Request.Method.POST, direccion+"/get_list", new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            //Toast.makeText(builder_server.getContext(), response, Toast.LENGTH_SHORT).show();
-                            //if (response.equals("ipc")) {
-                                //Toast.makeText(getBaseContext(), response.toString(), Toast.LENGTH_SHORT).show();
+    if(servers.size()!=0) {
+        for (int i = 0; i < servers.size(); i++) {
+            String url_obj = servers.get(i).get("URL");
+            // Envio de los datos
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            StringRequest stringRequestData = new StringRequest(Request.Method.POST, url_obj + "/test", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.e("response", response);
+                    if (response.equals("ipc")) {
+                        Toast.makeText(getBaseContext(), "Conectado a la red", Toast.LENGTH_SHORT).show();
+                        Log.w("marca 0", "ok");
+                        readData(url_obj);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getBaseContext(), "No se puede comprobar la conexion con la red", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    try {
+                        params.put("USER", "admin");
+                    } catch (Exception e) {
+                    }
+                    return params;
+                }
+            };
+            requestQueue.add(stringRequestData);
 
-                            try {
+        }
+    } else if (servers.size()==0) {
+        // TODO pedir configuracion del servidor
+        Toast.makeText(getBaseContext(), "No hay ninguna red configurada", Toast.LENGTH_SHORT).show();
+    }
 
-                                JSONArray casos = new JSONArray(response.toString());
-                                ArrayList<PersonClass> personas = new ArrayList<>();
+}
 
-                                for (int i = 0; i < casos.length(); i++) {
-                                    BDData casosBDData = new BDData(getBaseContext(), "BDData", null, 1);
+    private void readData(String url){
 
-                                    PersonClass person = new PersonClass(getBaseContext());
-                                    JSONObject personJson = casos.getJSONObject(i);
-                                    String name = personJson.getString("nombre");
+        // Construyo la url
 
-                                    person.Data.put("DNI", personJson.getString("dni"));
-                                    person.Data.put("NOMBRE", personJson.getString("nombre"));
-                                    person.Data.put("APELLIDO", personJson.getString("apellido"));
+        if (url.length()!=0) {
 
-                                    String formatoOriginal = "yyyy-MM-dd";
-                                    String formatoDeseado = "MMM dd, yyyy";
-                                    SimpleDateFormat formato = new SimpleDateFormat(formatoOriginal);
-                                    // Convertimos la cadena a un objeto Date
-                                    Date fecha = formato.parse(personJson.getString("fecha_nacimiento"));
-                                    // Creamos un objeto SimpleDateFormat para el formato deseado
-                                    SimpleDateFormat formatoNuevo = new SimpleDateFormat(formatoDeseado);
-                                    person.Data.put("FECHA", formatoNuevo.format(fecha));
-                                    if(personJson.getString("status").equals("activo")) {
-                                        person.Data.put("RE60_0", "SI");
-                                    }
-                                    if(!personJson.getString("efector").equals("null")){
-                                        person.Data.put("EFECTOR", personJson.getString("efector"));
-                                    }
+            // Envio de los datos
+            RequestQueue requestQueue = Volley.newRequestQueue(getBaseContext());
 
-                                    if (!casosBDData.existCase(personJson)) {
-                                        Log.e("Person", personJson.toString());
-                                        casosBDData.insert_person(person);
-                                        TextView seguimientos = (TextView) findViewById(R.id.textView27);
-                                        seguimientos.setText(casosBDData.getNumberSeguimientos());
-                                    }
+            StringRequest stringRequestData = new StringRequest(Request.Method.POST, url + "/get_list", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    //Toast.makeText(builder_server.getContext(), response, Toast.LENGTH_SHORT).show();
+                    //if (response.equals("ipc")) {
+                    //Toast.makeText(getBaseContext(), response.toString(), Toast.LENGTH_SHORT).show();
 
-                                    Log.d("Person", "Name: " + name);
-                                    casosBDData.close();
-                                }
+                    try {
 
-                            } catch (JSONException | ParseException e) {
-                                throw new RuntimeException(e);
+                        JSONArray casos = new JSONArray(response.toString());
+                        ArrayList<PersonClass> personas = new ArrayList<>();
+
+                        for (int i = 0; i < casos.length(); i++) {
+                            BDData casosBDData = new BDData(getBaseContext(), "BDData", null, 1);
+
+                            PersonClass person = new PersonClass(getBaseContext());
+                            JSONObject personJson = casos.getJSONObject(i);
+                            String name = personJson.getString("nombre");
+
+                            person.Data.put("DNI", personJson.getString("dni"));
+                            person.Data.put("NOMBRE", personJson.getString("nombre"));
+                            person.Data.put("APELLIDO", personJson.getString("apellido"));
+
+                            String formatoOriginal = "yyyy-MM-dd";
+                            String formatoDeseado = "MMM dd, yyyy";
+                            SimpleDateFormat formato = new SimpleDateFormat(formatoOriginal);
+                            // Convertimos la cadena a un objeto Date
+                            Date fecha = formato.parse(personJson.getString("fecha_nacimiento"));
+                            // Creamos un objeto SimpleDateFormat para el formato deseado
+                            SimpleDateFormat formatoNuevo = new SimpleDateFormat(formatoDeseado);
+                            person.Data.put("FECHA", formatoNuevo.format(fecha));
+                            if (personJson.getString("status").equals("activo")) {
+                                person.Data.put("RE60_0", "SI");
+                            }
+                            if (!personJson.getString("efector").equals("null")) {
+                                person.Data.put("EFECTOR", personJson.getString("efector"));
                             }
 
+                            if (!casosBDData.existCase(personJson)) {
+                                Log.e("Person", personJson.toString());
+                                casosBDData.insert_person(person);
+                                TextView seguimientos = (TextView) findViewById(R.id.textView27);
+                                seguimientos.setText(casosBDData.getNumberSeguimientos());
+                            }
 
-
-
-                            showCases();
-
+                            Log.d("Person", "Name: " + name);
+                            casosBDData.close();
                         }
-                    }, new Response.ErrorListener(){
-                        @Override
-                        public void onErrorResponse(VolleyError error){
-                            Toast.makeText(getBaseContext(), "No conectado a la red", Toast.LENGTH_SHORT).show();
-                            showCases();
 
-                        }
-                    }){@Override
-                    protected Map<String,String> getParams(){
-                        Map<String,String> params = new HashMap<>();
-                        try {
-                            params.put("USER", "admin");
-                        }catch (Exception e){}
-                        return params;
+                    } catch (JSONException | ParseException e) {
+                        throw new RuntimeException(e);
                     }
-                    };
-                    requestQueue.add(stringRequestData);
-                //}
+
+                    showCases();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getBaseContext(), "No se recuperaron los datos", Toast.LENGTH_SHORT).show();
+                    showCases();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    try {
+                        params.put("USER", "admin");
+                    } catch (Exception e) {
+                    }
+                    return params;
+                }
+            };
+            requestQueue.add(stringRequestData);
+            //}
             //});
-
-
-
+        }else{
+            showCases();
+            Toast.makeText(getBaseContext(), "No conectado a la red", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showCases(){
@@ -664,7 +714,14 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
         cabecera.setText("Seguimientos");
 
         Button guardar = view1.findViewById(R.id.GUARDARGrl);
-        guardar.setVisibility(View.GONE);
+        guardar.setVisibility(View.VISIBLE);
+        guardar.setText("ENVIAR MIS REGISTROS A LA RED");
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getBaseContext(), "Aun no disponible", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         LinearLayout ly = view1.findViewById(R.id.LYGralOptions);
         BDData casosBDData = new BDData(getBaseContext(), "BDData", null, 1);
@@ -672,6 +729,40 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
         for (int i=0; i<cases.size(); i++){
             String identificacion = cases.get(i).Data.get("NOMBRE") + " " + cases.get(i).Data.get("APELLIDO");
             View view = viewBasic.generateCase(identificacion, "Status: "+"ACTIVO");
+
+            Button btn = view.findViewById(R.id.Btncase);
+            int finalI = i;
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getBaseContext(), identificacion, Toast.LENGTH_SHORT).show();
+                    if(adminBDData.existCaseWithinCoordinates(cases.get(finalI).Data.get("NOMBRE"),
+                            cases.get(finalI).Data.get("APELLIDO"),
+                            cases.get(finalI).Data.get("DNI"))){
+                        //Toast.makeText(getBaseContext(), "hay que actualizar", Toast.LENGTH_SHORT).show();
+                        updateCaseWithinCoordinate(cases.get(finalI).Data.get("NOMBRE"),
+                                cases.get(finalI).Data.get("APELLIDO"),
+                                cases.get(finalI).Data.get("DNI"),
+                                cases.get(finalI).Data.get("FECHA"));
+                    }else {
+                        // Encontrar los datos de la familia
+                        ArrayList<PersonClass> person = adminBDData.SearchPersonsNameLastnameDNI(getBaseContext(),
+                                cases.get(finalI).Data.get("NOMBRE"),
+                                cases.get(finalI).Data.get("APELLIDO"),
+                                cases.get(finalI).Data.get("DNI"));
+
+                        if (person.size()>0) {
+                            Intent Modif = new Intent(getBaseContext(), MenuFamilia.class);
+                            Modif.putExtra("LATITUD", person.get(0).Data.get("LATITUD"));
+                            Modif.putExtra("LONGITUD", person.get(0).Data.get("LONGITUD"));
+                            startActivity(Modif);
+                            dialog.dismiss();
+                            finish();
+                        }
+                    }
+                }
+            });
+
             ly.addView(view);
         }
         casosBDData.close();
@@ -683,6 +774,111 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
                 dialog.dismiss();
             }
         });
+    }
+
+    private void updateCaseWithinCoordinate(String name, String apellido, String dni, String dob){
+        // Chequeo funcionamiento del GPS
+        boolean estado = encuestador.ubicacion.funcionaServicioGPS(ServicioGPS.class);
+        if (!estado) {
+
+            /* Si no esta iniciado el servicio creo una alert para solicitar el inicio del gps*/
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            LayoutInflater Inflater = getLayoutInflater();
+            View view1 = Inflater.inflate(R.layout.message_yes_no, null);
+            builder.setView(view1);
+            builder.setCancelable(false);
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+
+            TextView txt1 = view1.findViewById(R.id.CONSULTA);
+            txt1.setText("¿Iniciar recorrido?");
+
+            Button si = view1.findViewById(R.id.BTNSI);
+            si.setOnClickListener(view2 -> {
+
+                /* Iniciar el recorrido y pasar el foco de la app a un nuevo activity para poder
+                 * cargar los datos de una familia*/
+                Intent intent = new Intent(getBaseContext(), ServicioGPS.class);
+                startService(intent);
+                TextView recorridoTXT = findViewById(R.id.textView40);
+                recorridoTXT.setText(getString(R.string.terminar_recorrido));
+                dialog.dismiss();
+
+                SelectEfectorWithinCoordinates(name, apellido, dni, dob);
+                //SelectFamily();
+            });
+
+            // Cerrar el alert de iniciar el recorrido
+            Button no = view1.findViewById(R.id.BTNNO);
+            no.setOnClickListener(view22 -> dialog.dismiss());
+        } else {
+            if(encuestador.EfectorTrabajo.length()==0) {
+                SelectEfectorWithinCoordinates(name, apellido, dni, dni);
+            }else {
+                //SelectFamily();
+                // Paso a actualizar directamente
+                Intent Modif = new Intent(getBaseContext(), MenuFamilia.class);
+                Modif.putExtra("IDENCUESTADOR", encuestador.getID());
+                Modif.putExtra("COORDINATES", "NO");
+                Modif.putExtra("NAME", name);
+                Modif.putExtra("SURNAME", apellido);
+                Modif.putExtra("DNI", dni);
+                Modif.putExtra("DOB", dob);
+                startActivityForResult(Modif, 1);
+
+            }
+        }
+    }
+
+    private void SelectEfectorWithinCoordinates(String name, String apellido, String dni, String dob){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater Inflater = LayoutInflater.from(this);
+        View view1 = Inflater.inflate(R.layout.alert_efector, null);
+        builder.setView(view1);
+        builder.setCancelable(false);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // AUTOCOMPLETE TEXTVIEW DE LOS TRABAJOS
+        autoEfector = view1.findViewById(R.id.AutoEfector);
+        List<String> efectores = new ArrayList<String>();
+        EfectoresSearchAdapter searchAdapter = new EfectoresSearchAdapter(this, efectores);
+        autoEfector.setThreshold(1);
+        autoEfector.setAdapter(searchAdapter);
+        //if(encuestador.EfectorTrabajo!=null) autoEfector.setText(encuestador.EfectorTrabajo);
+
+        final Button guardar = view1.findViewById(R.id.GUARDAREFECTOR);
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(autoEfector.getText().toString().length()!=0) {
+                    encuestador.EfectorTrabajo = admin.CodeEfector(autoEfector.getText().toString());
+                    admin.UpdateEncuestador(encuestador.DNI, encuestador.EfectorTrabajo);
+                    dialog.dismiss();
+                    //SelectFamily();
+                    Intent Modif = new Intent(getBaseContext(), MenuFamilia.class);
+                    Modif.putExtra("IDENCUESTADOR", encuestador.getID());
+                    Modif.putExtra("COORDINATES", "NO");
+                    Modif.putExtra("COORDINATES", "NO");
+                    Modif.putExtra("NAME", name);
+                    Modif.putExtra("SURNAME", apellido);
+                    Modif.putExtra("DNI", dni);
+                    Modif.putExtra("DOB", dob);
+                    startActivityForResult(Modif, 1);
+                }else {Toast.makeText(getBaseContext(), "DEBE SELECCIONAR EL EFECTOR DESDE EL QUE ESTA TRABAJANDO" , Toast.LENGTH_SHORT).show();}
+            }
+        });
+
+        final Button cancelar = view1.findViewById(R.id.CANCELAREFECTOR);
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        final TextView AgregarManualmente = view1.findViewById(R.id.AGREGARMANUALMENTEEFECTOR);
+        AgregarManualmente.setVisibility(View.GONE);
     }
 
 //--------------------------------------------------------------------------------------------------
@@ -840,6 +1036,7 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
                     public void onClick(View view) {
                         Intent Modif = new Intent(getBaseContext(), MenuFamilia.class);
                         Modif.putExtra("IDENCUESTADOR", encuestador.getID());
+                        Modif.putExtra("COORDINATES", "SI");
                         startActivityForResult(Modif, 1);
                     }
                 });
@@ -1352,6 +1549,59 @@ public class MenuMapa extends AppCompatActivity implements OnMapReadyCallback, G
         builder.setCancelable(false);
         final AlertDialog dialog = builder.create();
         dialog.show();
+
+        // Server
+        ConstraintLayout server = (ConstraintLayout) view_alert.findViewById(R.id.serverBTN);
+        server.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder_server = new AlertDialog.Builder(builder.getContext());
+                LayoutInflater Inflater_server = getLayoutInflater();
+                View view_server = Inflater_server.inflate(R.layout.config_server, null);
+                builder_server.setView(view_server);
+                final AlertDialog dialog_server = builder_server.create();
+                dialog_server.show();
+
+                EditText url = view_server.findViewById(R.id.urlserver);
+
+                Button verificar = view_server.findViewById(R.id.VERIFICARSERVER);
+                verificar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        // Construyo la url
+                        String direccion = "http://"+url.getText().toString() +":5000";//+ port_server.getText().toString();
+                        // Envio de los datos
+                        RequestQueue requestQueue = Volley.newRequestQueue(builder_server.getContext());
+                        StringRequest stringRequestData = new StringRequest(Request.Method.POST, direccion+"/test", new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Toast.makeText(builder_server.getContext(), response, Toast.LENGTH_SHORT).show();
+                                if (response.equals("ipc")) {
+                                    admin.InsertServer(direccion, response);
+                                    dialog_server.dismiss();
+                                    //url.setText(direccion + "/fhir_json");
+                                    //nameserver.setText(response);
+                                }
+                            }
+                        }, new Response.ErrorListener(){
+                            @Override
+                            public void onErrorResponse(VolleyError error){
+                                Toast.makeText(builder_server.getContext(), "No se puede comprobar la conexion", Toast.LENGTH_SHORT).show();
+                            }
+                        }){@Override
+                        protected Map<String,String> getParams(){
+                            Map<String,String> params = new HashMap<>();
+                            try {
+                                params.put("USER", "admin");
+                            }catch (Exception e){}
+                            return params;
+                        }
+                        };
+                        requestQueue.add(stringRequestData);
+                    }
+                });
+            }
+        });
 
         // Compartir
         ConstraintLayout compartir = (ConstraintLayout) view_alert.findViewById(R.id.compartirBTN);

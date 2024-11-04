@@ -130,6 +130,7 @@ public class FHIR {
                 progress.setProgress(100);
                 progress.dismiss();
                 Toast.makeText(context, context.getString(R.string.confirm_send), Toast.LENGTH_SHORT).show();
+
             }
         }, new Response.ErrorListener(){
             @Override
@@ -180,6 +181,7 @@ public class FHIR {
                     progress.setProgress(20);
                     requestQueue.add(stringRequestData);
                 }
+
             }
         }, new Response.ErrorListener(){
             @Override

@@ -19,6 +19,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -160,8 +161,7 @@ public class MenuFamilia extends AppCompatActivity {
             GeneralDescriptionFamiliarButton generalDescriptionFamiliarButton = new GeneralDescriptionFamiliarButton(this, familia, this.findViewById(android.R.id.content), false, false, false);
             generalDescriptionFamiliarButton.ColorAvanceGeneralFamilia();
         }
-        else{
-            if (getIntent().getSerializableExtra("LATITUD")!=null){
+        else if (getIntent().getSerializableExtra("LATITUD")!=null){
                 AddData = Boolean.TRUE;
                 familia.Latitud = getIntent().getStringExtra("LATITUD");
                 familia.Longitud = getIntent().getStringExtra("LONGITUD");
@@ -190,6 +190,24 @@ public class MenuFamilia extends AppCompatActivity {
 
                 }
                 ListeVer();
+        }
+
+        if (getIntent().getSerializableExtra("COORDINATES") != null) {
+            if (getIntent().getSerializableExtra("COORDINATES").equals("NO")) {
+                Toast.makeText(this, "hay que actualizar", Toast.LENGTH_SHORT).show();
+                PersonClass clasePersona = new PersonClass(this);
+                //clasePersona.Latitud = familia.Latitud;
+                //clasePersona.Longitud = familia.Longitud;
+                clasePersona.Nombre = getIntent().getSerializableExtra("NAME").toString();
+                clasePersona.Apellido = getIntent().getSerializableExtra("SURNAME").toString();
+                clasePersona.DNI = getIntent().getSerializableExtra("DNI").toString();
+                clasePersona.Nacimiento = getIntent().getSerializableExtra("DOB").toString();
+                clasePersona.Sexo = "X";
+                clasePersona.QR = "false";
+                clasePersona.Data.put("RE60_0", "SI");
+                MiembrosFamiliares.add(clasePersona);
+            } else {
+                Log.w("marca 1", getIntent().getSerializableExtra("COORDINATES") + "v");
             }
         }
 
@@ -222,6 +240,8 @@ public class MenuFamilia extends AppCompatActivity {
             });
         }
         encuestador.ADbtn(ButtonsViews, encuestador.FamilyButtons());
+
+
     }
 
     public void SwitchButton(View view){
@@ -755,6 +775,7 @@ public class MenuFamilia extends AppCompatActivity {
                         //familia.Data.putAll(adminBData.getValuesCacheUD());
                         //Log.e("insert family 0", familia.Latitud);
                         adminBData.insert_family(familia);
+                        adminBData.CoordinateAssignation();
 
                         /* Guardo Dengue si es que se cargaron datos en este modulo*/
                         if (familia.TipoTrabajo.length() != 0) {
@@ -794,6 +815,7 @@ public class MenuFamilia extends AppCompatActivity {
                 familia.LoadData();
 
                 adminBData.UpdateFamily(familia);
+                adminBData.CoordinateAssignation();
                 dialog_alert_save.dismiss();
                 finish();
             }

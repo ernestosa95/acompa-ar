@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -23,6 +24,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -84,23 +86,7 @@ public class BDData extends SQLiteOpenHelper {
     //----------------------------------------------------------------------------------------------
     //PERSONAS
     //GET
-    public String getNumberSeguimientos(){
-        String value = "0";
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        String search = "SELECT * FROM PERSONS WHERE RE60_0 = 'SI'";
-        //Cursor registros = db.rawQuery(search, null);
-
-        try {
-            value = String.valueOf(db.rawQuery(search, null).getCount());
-        }catch (Exception e){
-            Log.e("error_seguimientos", e.toString());
-        }
-
-
-        db.close();
-        return value;
-    }
 
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
@@ -1431,55 +1417,6 @@ public class BDData extends SQLiteOpenHelper {
     }
 
     //ACOMPAÑAR
-    /*public boolean ExistCase(JSONObject personJson){
-        Boolean value;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String search = null;
-
-        String nombre = null;
-        String apellido=null;
-        String dni=null;
-        Cursor registros;
-        try {
-            // Check for the existence of the RE60_0 column
-            String checkColumnQuery = "SELECT * FROM PERSONS";
-            Cursor checkCursor = db.rawQuery(checkColumnQuery, null);
-            checkCursor.moveToFirst();
-            int columnCount = 0;
-            for (int i=0; i<checkCursor.getCount(); i++){
-                if (checkCursor.getColumnName(i).equals("RE60_0")){
-                    columnCount=1;
-                }
-            }
-            checkCursor.close();
-
-            if (columnCount==1) {
-                nombre = personJson.getString("nombre");
-                apellido = personJson.getString("apellido");
-                dni = personJson.getString("dni");
-
-                String sql = "SELECT * FROM PERSONS WHERE NOMBRE = ? AND APELLIDO = ? AND DNI = ? AND RE60_0 = ?";
-
-                registros = db.rawQuery(sql, new String[]{nombre, apellido, dni, "SI"});
-
-                if (registros.getCount() != 0) {
-                    value = Boolean.TRUE;
-                    Log.e("esta", nombre+" "+apellido);
-                }else {
-                    value = Boolean.FALSE;
-                    Log.e("no esta", nombre+" "+apellido);
-                }
-            }else {
-                Log.e("no", "existe 60");
-                value = Boolean.FALSE;
-            }
-            db.close();
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        }
-
-        return value;
-    }*/
 
     public boolean existCase(JSONObject personJson) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1544,7 +1481,145 @@ public class BDData extends SQLiteOpenHelper {
             db.close();
         }
 
+        HashMap<String,PersonClass> values = new HashMap<>();
+        HashSet<String> uniqueDnis = new HashSet<>();
+        for (int i=0; i<value.size(); i++){
+            values.put(value.get(i).Data.get("DNI"), value.get(i));
+            uniqueDnis.add(value.get(i).Data.get("DNI"));
+        }
 
-        return value;
+        ArrayList<PersonClass> devol = new ArrayList<>();
+        for (String dni : uniqueDnis) {
+            devol.add(values.get(dni));
+            // Aquí puedes realizar acciones con cada DNI único
+            System.out.println("DNI: " + dni);
+        }
+
+        return devol;
     }
+
+    public boolean existCaseWithinCoordinates(String nombre, String apellido, String dni) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        boolean exists = false;
+
+        try {
+
+            String sql = "SELECT * FROM PERSONS WHERE NOMBRE = ? AND APELLIDO = ? AND DNI = ?";
+            Cursor registros = db.rawQuery(sql, new String[]{nombre, apellido, dni});
+
+            registros.moveToFirst();
+            if (registros.getCount() > 0) {
+                String[] namesCol = registros.getColumnNames();
+                Log.e("colname", namesCol.toString());
+
+                for (int i=0; i< registros.getColumnCount(); i++) {
+
+                    if (registros.getColumnName(i).equals("RE60_0")) {
+                        if (registros.getString(i).equals("SI") &&
+                                registros.getString(registros.getColumnIndex("LATITUD"))==null){
+                            exists=true;
+                        }
+                        break; // No es necesario seguir buscando si ya lo encontramos
+                    }
+                }
+            }
+            registros.close();
+
+        } finally {
+            db.close();
+        }
+
+        return exists;
+    }
+
+    public void CoordinateAssignation() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<HashMap<String,String>> persons = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM PERSONS";
+            Cursor cursor = db.rawQuery(sql, null);
+
+
+            if (cursor.moveToFirst()) {
+                // Process the data here
+
+                while (!cursor.isAfterLast()) {
+                    // Extract data from the cursor
+                    HashMap<String,String> person = new HashMap<>();
+                    if (cursor.getString(cursor.getColumnIndex("LATITUD"))!=null) {
+                        person.put("LATITUD", cursor.getString(cursor.getColumnIndex("LATITUD")));
+                        person.put("LONGITUD", cursor.getString(cursor.getColumnIndex("LONGITUD")));
+                    }else {
+                        person.put("LATITUD", "null");
+                        person.put("LONGITUD", "null");
+                    }
+                    person.put("DNI", cursor.getString(cursor.getColumnIndex("DNI")));
+
+                    persons.add(person);
+                    cursor.moveToNext();
+                }
+            } else {
+                // Handle the case where no data is found
+                Log.w("CoordinateAssignation", "No data found in PERSONS table");
+            }
+
+            cursor.close();
+        } catch (SQLException e) {
+            Log.e("CoordinateAssignation", "Error querying database", e);
+            // Handle the exception, e.g., display an error message to the user
+        } finally {
+            db.close();
+        }
+
+        for (int i=0; i<persons.size(); i++){
+            for (int j=0; j<persons.size(); j++){
+                if (persons.get(i).get("DNI").equals(persons.get(j).get("DNI"))){
+                    if (persons.get(i).get("LATITUD").equals("null") && !persons.get(j).get("LATITUD").equals("null")){
+                        persons.get(i).put("LATITUD", persons.get(j).get("LATITUD"));
+                        persons.get(i).put("LONGITUD", persons.get(j).get("LONGITUD"));
+                    }
+                }
+            }
+        }
+
+        SQLiteDatabase dbw = this.getWritableDatabase();
+        ContentValues valores = new ContentValues();
+        for (int i=0; i<persons.size(); i++){
+            Log.w("person", persons.get(i).get("DNI") + ", "+ persons.get(i).get("LATITUD")+", "+ persons.get(i).get("LONGITUD"));
+            if (!persons.get(i).get("LATITUD").equals("null") ){
+                valores.put("LATITUD", persons.get(i).get("LATITUD"));
+                valores.put("LONGITUD", persons.get(i).get("LONGITUD"));
+                String[] args = new String[]{persons.get(i).get("DNI")};
+                dbw.update("PERSONS", valores, "DNI=?", args);
+            }
+        }
+    }
+
+    public String getNumberSeguimientos(){
+        String value = "0";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String search = "SELECT * FROM PERSONS";
+        Cursor registros = db.rawQuery(search, null);
+
+        /*try {
+            value = String.valueOf(db.rawQuery(search, null).getCount());
+        }catch (Exception e){
+            Log.e("error_seguimientos", e.toString());
+        }*/
+
+        HashSet<String> uniqueDnis = new HashSet<>();
+        registros.moveToFirst();
+        for (int i=0; i<registros.getCount(); i++){
+            if (registros.getString(registros.getColumnIndex("RE60_0")).equals("SI")) {
+                uniqueDnis.add(registros.getString(registros.getColumnIndex("DNI")));
+            }
+            registros.moveToNext();
+        }
+
+        db.close();
+        return Integer.toString(uniqueDnis.size());
+    }
+
 }
